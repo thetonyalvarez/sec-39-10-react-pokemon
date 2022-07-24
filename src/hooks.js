@@ -12,10 +12,10 @@ const useFlip = (initValue = false) => {
 
 const useAxios = (url) => {
   const [response, setResponse] = useState([]);
-  
-  const addResponse = async (formatter = data => data) => {
-    const resp = await axios.get(url)
-    setResponse(data => [...data, formatter(resp.data)]);
+
+  const addResponse = async (endpoint = "") => {
+    const resp = await axios.get(url + endpoint)
+    setResponse(data => [...data, resp.data]);
   }
 
   return [ response, addResponse ]
